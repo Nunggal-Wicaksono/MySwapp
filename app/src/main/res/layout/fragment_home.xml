@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/homeFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Greeting dan saldo -->
+        <TextView
+            android:text="Hello, Nunggal!"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="start" />
+
+        <TextView
+            android:text="Your available balance"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:text="Rp 100.000"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp" />
+
+        <!-- Tombol ikon: Scan, Top Up, Send -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="32dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnScan"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:padding="56dp"
+                    android:background="@drawable/circle_background"
+                    android:src="@drawable/ic_scan"
+                    android:contentDescription="Scan"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:text="Scan"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnTopUp"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/circle_background"
+                    android:src="@drawable/ic_topup"
+                    android:contentDescription="Top Up"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:text="Top Up"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnSend"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/circle_background"
+                    android:src="@drawable/ic_send"
+                    android:contentDescription="Send"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:text="Send"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Notifikasi hasil tukar mata uang -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="$89.759"
+                android:background="#6686cc"
+                android:padding="20dp"
+                android:textSize="25dp"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="¥45.776"
+                android:background="#6686cc"
+                android:textSize="25dp"
+                android:padding="20dp"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="€45.76"
+                android:textSize="25dp"
+                android:background="#6686cc"
+                android:padding="20dp"
+                android:textColor="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
