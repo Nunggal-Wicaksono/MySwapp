@@ -8,9 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.example.myswap.data.AppDatabase
+import com.example.myswap.data.SwapHistory
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.net.URL
+import java.text.NumberFormat
+import java.util.*
 
 class SwapFragment : Fragment() {
 
@@ -79,8 +83,33 @@ class SwapFragment : Fragment() {
 
         // Optional manual button
         btnCreateSwap.setOnClickListener {
-            triggerExchange()
+            val fromCurrency = spinnerFromCurrency.selectedItem.toString()
+            val toCurrency = spinnerToCurrency.selectedItem.toString()
+
+            val fromAmount = etFromAmount.text.toString().toDoubleOrNull() ?: 0.0
+            val toAmount = etToAmount.text.toString().replace(".", "").replace(",", ".").toDoubleOrNull() ?: 0.0
+
+            if (fromAmount == 0.0 || toAmount == 0.0) {
+                Toast.makeText(requireContext(), "Masukkan nominal yang valid", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val db = AppDatabase.getDatabase(requireContext())
+            val history = SwapHistory(
+                fromCurrency = fromCurrency,
+                toCurrency = toCurrency,
+                fromAmount = fromAmount,
+                toAmount = toAmount
+            )
+
+            CoroutineScope(Dispatchers.IO).launch {
+                db.swapHistoryDao().insert(history)
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Swap berhasil disimpan!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
 
         return view
     }
@@ -117,9 +146,20 @@ class SwapFragment : Fragment() {
                 val result = jsonObject.getJSONObject("rates").getDouble(to)
 
                 withContext(Dispatchers.Main) {
-                    etToAmount.setText(String.format("%.2f", result))
+                    // Format angka ke dalam locale Indonesia (misalnya "10.000,50")
+                    val localeID = Locale("in", "ID")
+                    val formatter = NumberFormat.getNumberInstance(localeID).apply {
+                        maximumFractionDigits = 2
+                        minimumFractionDigits = 2
+                    }
+
+                    val formattedResult = formatter.format(result)
+                    val formattedRate = formatter.format(result / amount)
+
+                    etToAmount.setText(formattedResult)
                     tvRateFrom.text = "1 $from"
-                    tvRateTo.text = "= %.2f $to".format(result / amount)
+                    tvRateTo.text = "= $formattedRate $to"
+
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
