@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.nav_home -> replaceFragment(HomeFragment())
                 R.id.nav_swap -> replaceFragment(SwapFragment())
+                R.id.nav_profile -> replaceFragment(ProfileFragment())
             }
             true
         }
