@@ -43,6 +43,17 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(), SettingsActivity::class.java))
         }
 
+        // ✅ Fungsi Logout
+        binding.btnLogout.setOnClickListener {
+            sessionManager.clearSession()
+
+            // Kembali ke halaman login dan hapus semua activity sebelumnya
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
         return binding.root
     }
 }
+

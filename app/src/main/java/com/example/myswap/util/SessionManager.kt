@@ -20,6 +20,8 @@ class SessionManager(context: Context) {
     }
 
     fun clearSession() {
-        prefs.edit().clear().apply()
+        val editor = prefs.edit()
+        editor.clear()
+        editor.apply()
     }
 }
