@@ -14,7 +14,7 @@ class WelcomeActivity : AppCompatActivity() {
         val btnGetStarted = findViewById<Button>(R.id.btnGetStarted)
         btnGetStarted.setOnClickListener {
             // Pindah ke halaman Login atau Home
-            val intent = Intent(this, MainActivity::class.java) // ganti sesuai targetmu
+            val intent = Intent(this, LoginActivity::class.java) // ganti sesuai targetmu
             startActivity(intent)
             finish()
         }

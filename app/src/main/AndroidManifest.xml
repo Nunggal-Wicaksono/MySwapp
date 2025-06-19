@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySwap"
         tools:targetApi="31">
+
         <!-- WelcomeActivity: launcher pertama saat aplikasi dibuka -->
         <activity
             android:name=".WelcomeActivity"
@@ -25,8 +26,18 @@
             </intent-filter>
         </activity>
 
-        <!-- Activity utama setelah Welcome -->
+        <!-- Activity untuk login & register -->
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+
+        <!-- Activity utama -->
         <activity android:name=".MainActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".HistorisFragment"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".SettingsActivity" />
+
+
 
     </application>
 
