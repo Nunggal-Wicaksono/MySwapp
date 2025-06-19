@@ -15,15 +15,14 @@
 
         <!-- Greeting dan saldo -->
         <TextView
-            android:text="Hello, Nunggal!"
+            android:id="@+id/tvGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello,"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="40dp"
-            android:layout_gravity="start" />
+            android:layout_marginBottom="40dp"/>
 
         <TextView
             android:text="Your available balance"

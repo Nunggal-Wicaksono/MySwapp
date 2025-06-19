@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myswap.adapter.SwapHistoryAdapter
+import com.example.myswap.util.SessionManager
 import com.example.myswap.viewmodel.HomeViewModel
 import com.example.myswap.viewmodel.HomeViewModelFactory
 
@@ -61,6 +63,11 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val tvGreeting = view.findViewById<TextView>(R.id.tvGreeting)
+        val sessionManager = SessionManager(requireContext())
+        val name = sessionManager.getName()
+        tvGreeting.text = "Hello, $name"
 
         viewModel = ViewModelProvider(
             this,
